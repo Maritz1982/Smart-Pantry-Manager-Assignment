@@ -1,5 +1,7 @@
 package com.example.smartpantryassignment.database;
 import android.content.Context;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -12,6 +14,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db){
+        String CREATE_PANTRY_TABLE =
+                "CREATE TABLE PantryItems (" +
+                        "pantryId INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "ingredient TEXT," +
+                        "quantity REAL," +
+                        "unitMeasure TEXT," +
+                        "expiryDate TEXT" +
+                        ")";
+    db.execSQL(CREATE_PANTRY_TABLE);
+    } //creates table in the SQL database
+    public void addIngredient(PantryItem item) {
+        SQLiteDatabase db = this.getWritetableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("ingredient", item.getIngredient());
+        values.put("quantity", item.getQuantity());
+        values.put("unitMeasure", item.getunitMeasure());
+        values.put("expireDate", item.getexpireDate());
+
+        db.insert("PantryItems", null, values);
+        db.close();
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
