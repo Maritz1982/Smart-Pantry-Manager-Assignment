@@ -41,15 +41,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
     }
-    public ArrayList<PantryItem> getAllIngredients() { //add method
+    public ArrayList<PantryItem> getAllIngredients() { //add method and will show all the ingredients
         ArrayList<PantryItem> pantryList = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase(); //opens the database to allow reading data
         Cursor cursor = db.rawQuery(
-                "SELECT * FROM PantryItems",
+                "SELECT * FROM PantryItems", //runs the query for all ingredients in the table
                 null);
         if (cursor.moveToFirst()) {
             do {
-                PantryItem item = new PantryItem();
+                PantryItem item = new PantryItem(); //creates pantryitem objects then fill it with data from the db
                 item.setPantryId(
                         cursor.getInt(0));
                 item.setIngredient(
@@ -60,7 +60,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         cursor.getString(3));
                 item.setExpireDate(
                         cursor.getString(4));
-                pantryList.add(item);
+                pantryList.add(item); //adds to the list
             } while (cursor.moveToNext());
 
         }
