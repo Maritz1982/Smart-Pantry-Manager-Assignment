@@ -122,7 +122,7 @@
         android:layout_marginEnd="137dp"
         android:layout_marginBottom="279dp"
         android:ems="10"
-        android:hint="Expiry Date"
+        android:hint="Expire Date"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
