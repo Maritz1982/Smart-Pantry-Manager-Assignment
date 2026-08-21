@@ -27,6 +27,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         ")";
     db.execSQL(CREATE_PANTRY_TABLE);
     } //creates table in the SQL database
+    public void deleteIngredient(int pantryId){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(
+                "PantryItems",
+                "pantryId=?",
+                new String[]{String.valueOf(pantryId)}
+        );
+        db.close();
+    }
     public void addIngredient(PantryItem item) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
