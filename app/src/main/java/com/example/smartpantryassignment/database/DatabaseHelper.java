@@ -50,7 +50,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 new String[]{String.valueOf(item.getPantryId())}
         );
         db.close();
+
     }
+
     public void addIngredient(PantryItem item) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
