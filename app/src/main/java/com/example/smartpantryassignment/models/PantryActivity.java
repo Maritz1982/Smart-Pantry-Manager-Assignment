@@ -1,7 +1,7 @@
 package com.example.smartpantryassignment.models;
 
 import android.os.Bundle;
-
+import android.view.View;
 import androidx.activity.EdgeToEdge; //pulls the Jetpack utility tools used to force the apps ui to draw behind the system bars for fullscreen design
 import androidx.appcompat.app.AppCompatActivity; //backward compatible base class for creating screens to run accross diferent versions of android
 import androidx.core.graphics.Insets; //core graphics inserts the structural padding applied to rectangle to shrink and expand bounderies
@@ -14,6 +14,8 @@ import com.example.smartpantryassignment.database.DatabaseHelper;
 import com.example.smartpantryassignment.models.PantryItem;
 import com.example.smartpantryassignment.R;
 import java.util.ArrayList;
+import android.content.Intent;
+import android.widget.Button;
 
 public class PantryActivity extends AppCompatActivity {
 
@@ -21,6 +23,7 @@ public class PantryActivity extends AppCompatActivity {
     PantryAdapter adapter;
     DatabaseHelper dbHelper;
     ArrayList<PantryItem> pantryList;
+    Button btnAddIngredient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,17 @@ public class PantryActivity extends AppCompatActivity {
         recyclerPantry.setLayoutManager(
                 new LinearLayoutManager(this));
         recyclerPantry.setAdapter(adapter);
+        btnAddIngredient = findViewById(R.id.btnAddIngredient);
+        btnAddIngredient.setOnClickListener(new View.OnClickListener(){
+            @Override
+                    public void onClick(View v) {
+                Intent intent = new Intent(
+                        PantryActivity.this,
+                        com.example.smartpantryassignment.AddIngredientActivity.class);
+                startActivity(intent);
+            }
+                });
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

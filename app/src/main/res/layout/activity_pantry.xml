@@ -16,6 +16,12 @@
         android:layout_height="wrap_content"
         android:text="My Pantry" />
 
+    <Button
+        android:id="@+id/btnAddIngredient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Ingredient"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerPantry"
         android:layout_width="match_parent"
