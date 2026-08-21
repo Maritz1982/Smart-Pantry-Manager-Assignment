@@ -13,13 +13,14 @@
         android:id="@+id/textView"
         android:textSize="24sp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:text="My Pantry" />
+        android:layout_height="wrap_content"
+        android:text="My Pantry" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerPantry"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
