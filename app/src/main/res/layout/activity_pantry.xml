@@ -22,6 +22,12 @@
         android:layout_height="wrap_content"
         android:text="Add Ingredient"/>
 
+    <Button
+        android:id="@+id/btnAddDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerPantry"
         android:layout_width="match_parent"

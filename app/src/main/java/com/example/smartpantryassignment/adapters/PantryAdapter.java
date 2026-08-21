@@ -45,4 +45,8 @@ RecyclerView.Adapter<PantryAdapter.ViewHolder> {
         public int getItemCount() {
         return pantryList.size();
         }
+
+        public interface OnIngredientClickListener {
+        void onIngredientClick(PantryItem item);
+        }
 }

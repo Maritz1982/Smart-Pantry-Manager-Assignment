@@ -36,6 +36,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         );
         db.close();
     }
+    public void updateIngredient(PantryItem item){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("ingredient", item.getIngredient());
+        values.put("quantity", item.getQuantity());
+        values.put("unitMeasure", item.getUnitMeasure());
+        values.put("expiryDate", item.getExpireDate());
+        db.update(
+                "PantryItems",
+                values,
+                "pantryId=?",
+                new String[]{String.valueOf(item.getPantryId())}
+        );
+        db.close();
+    }
     public void addIngredient(PantryItem item) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
