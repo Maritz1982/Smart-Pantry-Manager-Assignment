@@ -24,6 +24,7 @@ public class PantryActivity extends AppCompatActivity {
     DatabaseHelper dbHelper;
     ArrayList<PantryItem> pantryList;
     Button btnAddIngredient;
+    Button btnSuggestedRecipes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,22 +40,31 @@ public class PantryActivity extends AppCompatActivity {
                 new LinearLayoutManager(this));
         recyclerPantry.setAdapter(adapter);
         btnAddIngredient = findViewById(R.id.btnAddIngredient);
-        btnAddIngredient.setOnClickListener(new View.OnClickListener(){
+        btnAddIngredient.setOnClickListener(new View.OnClickListener() {
             @Override
-                    public void onClick(View v) {
+            public void onClick(View v) {
                 Intent intent = new Intent(
                         PantryActivity.this,
                         com.example.smartpantryassignment.AddIngredientActivity.class);
                 startActivity(intent);
             }
+        });
+        btnSuggestedRecipes =
+                findViewById(R.id.btnSuggestedRecipes);
+        btnSuggestedRecipes.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent =
+                                new Intent(
+                                        PantryActivity.this,
+                                        SuggestedRecipesActivity.class);
+                        startActivity(intent);
+                    }
                 });
 
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
     }
+
 }
+
