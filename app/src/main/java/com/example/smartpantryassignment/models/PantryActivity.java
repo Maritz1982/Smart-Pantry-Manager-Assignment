@@ -25,7 +25,7 @@ public class PantryActivity extends AppCompatActivity {
     ArrayList<PantryItem> pantryList;
     Button btnAddIngredient;
     Button btnSuggestedRecipes;
-    Button btnSeedRecipes;
+
 
 
     @Override
@@ -51,15 +51,10 @@ public class PantryActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btnSeedRecipes = findViewById(R.id.btnSeedRecipes);
-        btnSeedRecipes.setOnClickListener(new View.OnClickListener(){
 
-            @Override
-            public void onClick(View v) {
-                dbHelper.seedRecipes();
-                dbHelper.seedRecipeIngredients();
-            }
-        });
+
+
+
     }
         @Override
         protected void onResume() {
@@ -68,14 +63,6 @@ public class PantryActivity extends AppCompatActivity {
             adapter = new PantryAdapter(pantryList);
             recyclerPantry.setAdapter(adapter);
 
-        btnSeedRecipes = findViewById(R.id.btnSeedRecipes);
-        btnSeedRecipes.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                dbHelper.seedRecipes();
-                dbHelper.seedRecipeIngredients();
-            }
-        });
         btnSuggestedRecipes =
                 findViewById(R.id.btnSuggestedRecipes);
         btnSuggestedRecipes.setOnClickListener(
