@@ -29,7 +29,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
                 dbHelper.getSuggestedRecipes();
         StringBuilder builder =
                 new StringBuilder();
-        if (recipes.size)( == 0){
+        if (recipes.size() == 0){
             builder.append(
                     "No recipes match your pantry yet. \nAdd more ingredients."
 
@@ -45,10 +45,5 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
     }
 
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-    }
+
 }
