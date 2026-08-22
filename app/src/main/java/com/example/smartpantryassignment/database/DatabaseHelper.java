@@ -12,11 +12,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "smartpantry.db";
     private static final int DATABASE_VERSION = 1;
 
-    public DatabaseHelper(Context context){
+    public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
     @Override
-    public void onCreate(SQLiteDatabase db){
+    public void onCreate(SQLiteDatabase db) {
         String CREATE_PANTRY_TABLE =
                 "CREATE TABLE PantryItems (" +
                         "pantryId INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -25,9 +26,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "unitMeasure TEXT," +
                         "expireDate TEXT" +
                         ")";
-    db.execSQL(CREATE_PANTRY_TABLE);
-    } //creates table in the SQL database
-    public void deleteIngredient(int pantryId){
+        db.execSQL(CREATE_PANTRY_TABLE);
+        //creates table in the SQL database
+
+        String CREATE_RECIPES_TABLE = //creating db tables in SQLite
+                "CREATE TABLE Recipes (" +
+                        "recipeId INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "recipeName TEXT," +
+                        "recipeProcess TEXT" +
+                        ")";
+
+        db.execSQL(CREATE_RECIPES_TABLE); //execute it
+
+        String CREATE_RECIPE_INGREDIENTS_TABLE =
+                "CREATE TABLE RecipeIngredients (" +
+                        "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "recipeId INTEGER," +
+                        "ingredient TEXT," +
+                        "quantity REAL," +
+                        "unitMeasure TEXT" +
+                        ")";
+        db.execSQL(CREATE_RECIPE_INGREDIENTS_TABLE);
+    }
+
+    public void deleteIngredient(int pantryId) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(
                 "PantryItems",
@@ -36,7 +58,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         );
         db.close();
     }
-    public void updateIngredient(PantryItem item){
+
+    public void updateIngredient(PantryItem item) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("ingredient", item.getIngredient());
@@ -64,9 +87,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert("PantryItems", null, values);
         db.close();
     }
+
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
+
     public ArrayList<PantryItem> getAllIngredients() { //add method and will show all the ingredients
         ArrayList<PantryItem> pantryList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase(); //opens the database to allow reading data
@@ -95,10 +120,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return pantryList;
 
     }
+
+
 }
-
-
-
-
-
 //database helper manages the SQLite database where it will create tables and CRUD methods
