@@ -29,19 +29,19 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
                 dbHelper.getSuggestedRecipes();
         StringBuilder builder =
                 new StringBuilder();
-        if (recipes.size() == 0){
+        if (recipes.size() == 0) {
             builder.append(
-                    "No recipes match your pantry yet. \nAdd more ingredients."
-
+                    "No Recipes match your pantry yet.\nAdd more ingredients."
             );
-        } else{
+
+        }else{
             for (Recipe recipe : recipes) {
                 builder.append(
                         recipe.getRecipeName()
                 ).append("\n");
             }
         }
-        txtRecipes.setText(builder.toString());
+
     }
 
 
