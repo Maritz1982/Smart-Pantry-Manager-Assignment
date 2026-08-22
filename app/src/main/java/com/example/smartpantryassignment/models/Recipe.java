@@ -1,4 +1,4 @@
-package com.example.smartpantryassignment;
+package com.example.smartpantryassignment.models;
 
 public class Recipe {
     private int recipeId;
