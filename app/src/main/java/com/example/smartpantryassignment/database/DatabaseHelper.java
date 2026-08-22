@@ -560,7 +560,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return suggestedRecipes;
     }
-}
+    public Recipe getRecipeById(int recipeId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(
+                "SELECT * FROM Recipes WHERE recipeId=?",
+                new String[]{String.valueOf(recipeId)}
+        );
+        Recipe recipe = null;
+        if (cursor.moveToFirst()) {
+            recipe = new Recipe();
+            recipe.setRecipeId(
+                    cursor.getInt(0));
+            recipe.setRecipeName(
+                    cursor.getString(1));
+            recipe.setRecipeProcess(
+                    cursor.getString(2));
+        }
+        cursor.close();
+        db.close();
+        return recipe;
+    }
+
+
+
+
+        }
+
+
 
 
 
