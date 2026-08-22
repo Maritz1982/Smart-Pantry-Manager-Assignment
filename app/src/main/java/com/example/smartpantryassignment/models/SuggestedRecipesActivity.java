@@ -24,7 +24,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_suggested_recipes);
         txtRecipes = findViewById(R.id.txtRecipes);
-        dbHelper = new DatabaseHelper (this);
+        dbHelper = new DatabaseHelper(this);
         ArrayList<Recipe> recipes =
                 dbHelper.getSuggestedRecipes();
         StringBuilder builder =
@@ -34,7 +34,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
                     "No Recipes match your pantry yet.\nAdd more ingredients."
             );
 
-        }else{
+        } else {
             for (Recipe recipe : recipes) {
                 builder.append(
                         recipe.getRecipeName()
@@ -42,8 +42,8 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
             }
         }
 
+
+        txtRecipes.setText(builder.toString());
     }
-
-
 
 }

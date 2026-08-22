@@ -41,6 +41,7 @@ public class PantryActivity extends AppCompatActivity {
         recyclerPantry.setAdapter(adapter);
         btnAddIngredient = findViewById(R.id.btnAddIngredient);
         btnAddIngredient.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(
@@ -49,6 +50,14 @@ public class PantryActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+        @Override
+        protected void onResume() {
+            super.onResume();
+            pantryList = dbHelper.getAllIngredients();
+            adapter = new PantryAdapter(pantryList);
+            recyclerPantry.setAdapter(adapter);
+
         btnSuggestedRecipes =
                 findViewById(R.id.btnSuggestedRecipes);
         btnSuggestedRecipes.setOnClickListener(
@@ -63,7 +72,6 @@ public class PantryActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
-
     }
 
 }
