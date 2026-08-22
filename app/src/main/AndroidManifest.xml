@@ -14,7 +14,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".models.PantryActivity"
             android:exported="true"
@@ -28,13 +28,19 @@
         <activity
             android:name=".AddIngredientActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"></activity>
-
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".models.SuggestedRecipesActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".models.RecipeDetailActivity"
+            android:exported="false"/>
 
+        <activity
+            android:name=".models.SettingActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
