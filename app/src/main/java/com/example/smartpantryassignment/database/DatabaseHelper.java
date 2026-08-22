@@ -12,7 +12,7 @@ import com.example.smartpantryassignment.models.RecipeIngredient;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "smartpantry.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -512,32 +512,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         cursor.getDouble(3));
                 ingredient.setUnitMeasure(
                         cursor.getString(4));
-                ingredient.setUnitMeasure(
-                        cursor.getString(5));
-                ingredient.setUnitMeasure(
-                        cursor.getString(6));
-                ingredient.setUnitMeasure(
-                        cursor.getString(7));
-                ingredient.setUnitMeasure(
-                        cursor.getString(8));
-                ingredient.setUnitMeasure(
-                        cursor.getString(9));
-                ingredient.setUnitMeasure(
-                        cursor.getString(10));
-                ingredient.setUnitMeasure(
-                        cursor.getString(11));
-                ingredient.setUnitMeasure(
-                        cursor.getString(12));
-                ingredient.setUnitMeasure(
-                        cursor.getString(13));
-                ingredient.setUnitMeasure(
-                        cursor.getString(14));
-                ingredient.setUnitMeasure(
-                        cursor.getString(15));
-                ingredient.setUnitMeasure(
-                        cursor.getString(16));
-                ingredient.setUnitMeasure(
-                        cursor.getString(17));
+
                 ingredientList.add(ingredient);
             } while (cursor.moveToNext());
 

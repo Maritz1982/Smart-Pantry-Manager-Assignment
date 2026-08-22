@@ -42,6 +42,15 @@ public class PantryActivity extends AppCompatActivity {
                 new LinearLayoutManager(this));
         recyclerPantry.setAdapter(adapter);
         btnAddIngredient = findViewById(R.id.btnAddIngredient);
+        btnAddIngredient.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(
+                        PantryActivity.this,
+                        com.example.smartpantryassignment.AddIngredientActivity.class);
+                startActivity(intent);
+            }
+        });
         btnSeedRecipes = findViewById(R.id.btnSeedRecipes);
         btnSeedRecipes.setOnClickListener(new View.OnClickListener(){
 
@@ -58,6 +67,7 @@ public class PantryActivity extends AppCompatActivity {
             pantryList = dbHelper.getAllIngredients();
             adapter = new PantryAdapter(pantryList);
             recyclerPantry.setAdapter(adapter);
+
         btnSeedRecipes = findViewById(R.id.btnSeedRecipes);
         btnSeedRecipes.setOnClickListener(new View.OnClickListener(){
             @Override
