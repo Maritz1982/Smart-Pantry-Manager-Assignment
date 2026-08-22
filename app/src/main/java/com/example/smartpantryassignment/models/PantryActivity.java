@@ -25,6 +25,8 @@ public class PantryActivity extends AppCompatActivity {
     ArrayList<PantryItem> pantryList;
     Button btnAddIngredient;
     Button btnSuggestedRecipes;
+    Button btnSeedRecipes;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +42,13 @@ public class PantryActivity extends AppCompatActivity {
                 new LinearLayoutManager(this));
         recyclerPantry.setAdapter(adapter);
         btnAddIngredient = findViewById(R.id.btnAddIngredient);
-        btnAddIngredient.setOnClickListener(new View.OnClickListener() {
+        btnSeedRecipes = findViewById(R.id.btnSeedRecipes);
+        btnSeedRecipes.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(
-                        PantryActivity.this,
-                        com.example.smartpantryassignment.AddIngredientActivity.class);
-                startActivity(intent);
+                dbHelper.seedRecipes();
+                dbHelper.seedRecipeIngredients();
             }
         });
     }
@@ -57,7 +58,14 @@ public class PantryActivity extends AppCompatActivity {
             pantryList = dbHelper.getAllIngredients();
             adapter = new PantryAdapter(pantryList);
             recyclerPantry.setAdapter(adapter);
-
+        btnSeedRecipes = findViewById(R.id.btnSeedRecipes);
+        btnSeedRecipes.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                dbHelper.seedRecipes();
+                dbHelper.seedRecipeIngredients();
+            }
+        });
         btnSuggestedRecipes =
                 findViewById(R.id.btnSuggestedRecipes);
         btnSuggestedRecipes.setOnClickListener(

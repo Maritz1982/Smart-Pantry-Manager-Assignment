@@ -12,7 +12,7 @@ import com.example.smartpantryassignment.models.RecipeIngredient;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "smartpantry.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -48,7 +48,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "quantity REAL," +
                         "unitMeasure TEXT" +
                         ")";
-        db.execSQL(CREATE_RECIPE_INGREDIENTS_TABLE);
+        db.execSQL(CREATE_RECIPE_INGREDIENTS_TABLE);//create recipe ingrdients
+
     }
 
     public void deleteIngredient(int pantryId) {
@@ -92,6 +93,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS PantryItems");
+        db.execSQL("DROP TABLE IF EXISTS Recipes");
+        db.execSQL("DROP TABLE IF EXISTS RecipeIngredients");
+        onCreate(db);
     }
 
     public ArrayList<PantryItem> getAllIngredients() { //add method and will show all the ingredients
@@ -150,6 +155,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "Egg Fried Rice",
                 "Cook rice with the egg mixture and cut vegatables."
         );
+        addRecipe(
+                "Potato White Sauce",
+                "Heat milk and butter. Use a tablespoon of milk to mix the potato flour and salt together to ensure no clumping. Add potato flour and milk mix stirring until smooth, leave for 4 mins then remove and serve."
+        );
+        addRecipe(
+                "Rice Flour Flatbread",
+                "Boil potato. Mix the Rice flour, salt and potato flour together. Mash the boiled potato with the flour mix and press into 2 balls. Flatten and rollout. Heat pan to very hot and turn the flatbread when it makes big air pockets "
+        );
+        addRecipe(
+                "Cottage Pie",
+                "Add mince to an oven pan. Add the mash on top and level. Put the grated cheese generously on top. Bake until cheese browns and bubbles ."
+        );
+        addRecipe(
+                "BLT Sandwich",
+                "Pack the bread with the bacon, Tomato slices and lettuce in layers. Season with salt and blackpepper corns and enjoy."
+        );
+        addRecipe(
+                "Dagwood Sandwich",
+                "Fry the egg, add it to you breadroll as base. Add the steakstrips and bacon on top. Add the sliced tomatoes and sauce to complete it."
+        );
+        addRecipe(
+                "Boerewors Rolls",
+                "Put the Boerewors on the hotdog roll. Add the garnish of onions and tomato mix"
+        );
+        addRecipe(
+                "Chicken Lentil Soup",
+                "Put the Chicken, lentils, garlic, potato and butter into the slowcooker and cook for 2 hours. Spice close to 1 and a half hour afetr cooking for best taste ."
+        );
+        addRecipe(
+                "Ostrich Flatbread meal",
+                "Cook the ostrich pieces in the garlic and water mix. Spice as per your liking with your favourite spice mix. Butter the flatbreads and put the ostrich pieces on top."
+        );
+        addRecipe(
+                "Apple Pie",
+                "Cut the dough into square pieces of 15 cm by 15cm. Add a teaspoon of the apple and raisen mix into the middle. Fold all corners over to the middle until entirely wrapped. Bake for 30 mins."
+        );
+        addRecipe(
+                "Ricepaper Mochi",
+                "Fold the yogurt and fruit mix into the ricepaper. Freeze for 30 minutes"
+        );
+        addRecipe(
+                "Rumballs",
+                "Mix the condensemilk, biscuits and cacao together. Add the rum and roll into small balls - palmsize. Roll the balls in the coconut and put in the fridge for 30 minutes - better served cold."
+                );
+        addRecipe(
+                "Sugar Cone Marshmallow Desert",
+                "Fill the sugar cones with marshmallows, add the blocks of chocolate and cover in foil. Put on the braai for 10 minutes."
+        );
     }
 
     public void addRecipeIngredient(int recipeId,
@@ -164,7 +217,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("recipeId", recipeId);
         values.put("ingredient", ingredient);
         values.put("quantity", quantity);
-        values.put("unitmeasure", unitMeasure);
+        values.put("unitMeasure", unitMeasure);
         db.insert("RecipeIngredients", null, values);
         db.close();
     }
@@ -209,6 +262,208 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "Milk",
                 50,
                 "ml");
+        // Toasti cheese and tomato RecipeId 4
+        addRecipeIngredient(4,
+                "Bread",
+                2,
+                "pieces");
+        addRecipeIngredient(4,
+                "Cheese",
+                2,
+                "slices");
+        addRecipeIngredient(4,
+                "Tomato",
+                1,
+                "piece");
+        // Egg Fried Rice RecipeId 5
+        addRecipeIngredient(5,
+                "Rice",
+                250,
+                "g");
+        addRecipeIngredient(5,
+                "Eggs",
+                2,
+                "pieces");
+        // Potato White Sauce RecipeId 6
+        addRecipeIngredient(6,
+                "Potato flour",
+                1,
+                "tablespoon");
+        addRecipeIngredient(6,
+                "Butter",
+                1,
+                "tablespoon");
+        addRecipeIngredient(6,
+                "Milk",
+                1,
+                "cup");
+        // Rice flour flat bread RecipeId 7
+        addRecipeIngredient(7,
+                "Potato flour",
+                1,
+                "tablespoon");
+        addRecipeIngredient(7,
+                "Rice Flour",
+                125,
+                "g");
+        addRecipeIngredient(7,
+                "Boiled Potato",
+                1,
+                "piece");
+        // Cottage Pie RecipeId 8
+        addRecipeIngredient(8,
+                "Mince",
+                1,
+                "cup");
+        addRecipeIngredient(8,
+                "Mashed Potatoes",
+                1,
+                "cup");
+        addRecipeIngredient(8,
+                "Cheese",
+                1,
+                "cup");
+        // BLT sandwich RecipeId 9
+        addRecipeIngredient(9,
+                "Bacon",
+                5,
+                "strips");
+        addRecipeIngredient(9,
+                "Bread",
+                1,
+                "piece");
+        addRecipeIngredient(9,
+                "Lettuce",
+                2,
+                "pieces");
+        addRecipeIngredient(9,
+                "Tomato",
+                2,
+                "slices");
+        // Dagwood RecipeId 10
+        addRecipeIngredient(10,
+                "Steakstrips",
+                1,
+                "cup");
+        addRecipeIngredient(10,
+                "Egg",
+                2,
+                "pieces");
+        addRecipeIngredient(10,
+                "Tomato",
+                2,
+                "slices");
+        addRecipeIngredient(10,
+                "Bread",
+                2,
+                "slices");
+        // Boerewors Roll RecipeId 11
+        addRecipeIngredient(11,
+                "Hotdog Roll",
+                1,
+                "Roll");
+        addRecipeIngredient(11,
+                "Boerewors",
+                1,
+                "piece");
+        addRecipeIngredient(11,
+                "Tomato and Onion mix",
+                3,
+                "tablespoon");
+        // Chicken Cabbage Lentil Soup RecipeId 12
+        addRecipeIngredient(12,
+                "Chicken pieces",
+                1,
+                "cup");
+        addRecipeIngredient(12,
+                "Lentils",
+                1,
+                "cup");
+        addRecipeIngredient(12,
+                "Garlic cloves",
+                3,
+                "cup");
+        addRecipeIngredient(12,
+                "Baby cabbage",
+                1,
+                "piece");
+        // Ostrich flatbread meal RecipeId 13
+        addRecipeIngredient(13,
+                "Ostrich cubes",
+                1,
+                "cup");
+        addRecipeIngredient(13,
+                "Flatbread",
+                1,
+                "piece");
+        addRecipeIngredient(13,
+                "Onions",
+                1,
+                "cup");
+        // Apple pie RecipeId 14
+        addRecipeIngredient(14,
+                "Apple",
+                1,
+                "piece");
+        addRecipeIngredient(14,
+                "Puff Pastry",
+                1,
+                "roll");
+        addRecipeIngredient(14,
+                "Sugar",
+                1,
+                "cup");
+        addRecipeIngredient(14,
+                "Raisins",
+                1,
+                "cup");
+        // Rice Paper Mochi RecipeId 15
+        addRecipeIngredient(15,
+                "Rice Paper",
+                1,
+                "piece");
+        addRecipeIngredient(15,
+                "Yogurt",
+                250,
+                "ml");
+        addRecipeIngredient(15,
+                "Strawberry",
+                1,
+                "cup");
+        // Rum Balls RecipeId 8
+        addRecipeIngredient(16,
+                "Rum",
+                2,
+                "teaspoons");
+        addRecipeIngredient(16,
+                "Cocoa powder",
+                1,
+                "cup");
+        addRecipeIngredient(16,
+                "Marie Biscuits",
+                1,
+                "pack");
+        addRecipeIngredient(16,
+                "Condensedmilk",
+                1,
+                "can");
+        addRecipeIngredient(16,
+                "Dried coconut flakes",
+                1,
+                "cup");
+        // Sugar Cones marshmallow desert RecipeId 17
+        addRecipeIngredient(17,
+                "Chocolate bar clocks",
+                3,
+                "pieces");
+        addRecipeIngredient(17,
+                "Ice Cream Cone",
+                1,
+                "cone");
+        addRecipeIngredient(17,
+                "Marshmallows",
+                3,
+                "pieces");
     }
 
     public ArrayList<Recipe> getAllRecipes() { //db retrieval methods
@@ -257,6 +512,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         cursor.getDouble(3));
                 ingredient.setUnitMeasure(
                         cursor.getString(4));
+                ingredient.setUnitMeasure(
+                        cursor.getString(5));
+                ingredient.setUnitMeasure(
+                        cursor.getString(6));
+                ingredient.setUnitMeasure(
+                        cursor.getString(7));
+                ingredient.setUnitMeasure(
+                        cursor.getString(8));
+                ingredient.setUnitMeasure(
+                        cursor.getString(9));
+                ingredient.setUnitMeasure(
+                        cursor.getString(10));
+                ingredient.setUnitMeasure(
+                        cursor.getString(11));
+                ingredient.setUnitMeasure(
+                        cursor.getString(12));
+                ingredient.setUnitMeasure(
+                        cursor.getString(13));
+                ingredient.setUnitMeasure(
+                        cursor.getString(14));
+                ingredient.setUnitMeasure(
+                        cursor.getString(15));
+                ingredient.setUnitMeasure(
+                        cursor.getString(16));
+                ingredient.setUnitMeasure(
+                        cursor.getString(17));
                 ingredientList.add(ingredient);
             } while (cursor.moveToNext());
 
@@ -275,6 +556,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ArrayList<RecipeIngredient> ingredients =
                     getIngredientsForRecipe(
                             recipe.getRecipeId());
+            if (ingredients.size() ==0) {
+                canMake = false;
+
+            }
             for (RecipeIngredient ingredient : ingredients) {
                 boolean found = false;
                 ArrayList<PantryItem> pantryItems =

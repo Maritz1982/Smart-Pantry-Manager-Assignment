@@ -29,6 +29,9 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
                 dbHelper.getSuggestedRecipes();
         StringBuilder builder =
                 new StringBuilder();
+        //builder.append("Recipes Found:")
+            //    .append(recipes.size())
+            //    .append("\n\n");
         if (recipes.size() == 0) {
             builder.append(
                     "No Recipes match your pantry yet.\nAdd more ingredients."
