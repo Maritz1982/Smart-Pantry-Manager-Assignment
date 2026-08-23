@@ -25,7 +25,7 @@ public class PantryActivity extends AppCompatActivity {
     ArrayList<PantryItem> pantryList;
     Button btnAddIngredient;
     Button btnSuggestedRecipes;
-
+    Button btnSettings;
 
 
     @Override
@@ -66,6 +66,15 @@ public class PantryActivity extends AppCompatActivity {
                     pantryList,
                     dbHelper);
             recyclerPantry.setAdapter(adapter);
+        btnSettings = findViewById(R.id.btnSettings);
+        btnSettings.setOnClickListener(v->{
+            Intent intent =
+                    new Intent(
+                            PantryActivity.this,
+                            SettingActivity.class);
+            startActivity(intent);
+
+        });
 
         btnSuggestedRecipes =
                 findViewById(R.id.btnSuggestedRecipes);
