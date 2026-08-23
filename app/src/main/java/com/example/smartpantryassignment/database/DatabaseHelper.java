@@ -12,7 +12,7 @@ import com.example.smartpantryassignment.models.RecipeIngredient;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "smartpantry.db";
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 8;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -154,68 +154,68 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void seedRecipes() {
         addRecipe(
                 "Pancakes",
-                "Mix all dry ingredients first. Then add the wet ingredients and mix thoroughly. Cook in high heat pan. Turn once little bubbles appear. Serve with choice of sugar or savoury toppings."
+                "METHOD: Mix all dry ingredients first. Then add the wet ingredients and mix thoroughly. Cook in high heat pan. Turn once little bubbles appear. Serve with choice of sugar or savoury toppings."
         );
         addRecipe("French Toast",
-                "Mix eggs with salt and pepper, use a fork to mix for best results. Dip the bread in the egg mixture and fry. Serve with syrup or butter"
+                "METHOD: Mix eggs with salt and pepper, use a fork to mix for best results. Dip the bread in the egg mixture and fry. Serve with syrup or butter"
         );
         addRecipe("Omelette",
-                "Mix eggs with milk, beat mix and add salt. Fry in pan until slightly stiffened then turn."
+                "METHOD: Mix eggs with milk, beat mix and add salt. Fry in pan until slightly stiffened then turn."
         );
         addRecipe("Toasted Cheese and Tomato",
-                "Butter bread and turn upside down(butter should be on the outside). Put thinly sliced tomato, spice with favourite spices. Add cheese genorously. Add sweetchilly and mayonaise drops all over. Close the sandwich and bake for 3 mins on each side in the airfryer"
+                "METHOD: Butter bread and turn upside down(butter should be on the outside). Put thinly sliced tomato, spice with favourite spices. Add cheese genorously. Add sweetchilly and mayonaise drops all over. Close the sandwich and bake for 3 mins on each side in the airfryer"
         );
         addRecipe(
                 "Egg Fried Rice",
-                "Cook rice with the egg mixture and cut vegatables."
+                "METHOD: Cook rice with the egg mixture and cut vegatables."
         );
         addRecipe(
                 "Potato White Sauce",
-                "Heat milk and butter. Use a tablespoon of milk to mix the potato flour and salt together to ensure no clumping. Add potato flour and milk mix stirring until smooth, leave for 4 mins then remove and serve."
+                "METHOD: Heat milk and butter. Use a tablespoon of milk to mix the potato flour and salt together to ensure no clumping. Add potato flour and milk mix stirring until smooth, leave for 4 mins then remove and serve."
         );
         addRecipe(
                 "Rice Flour Flatbread",
-                "Boil potato. Mix the Rice flour, salt and potato flour together. Mash the boiled potato with the flour mix and press into 2 balls. Flatten and rollout. Heat pan to very hot and turn the flatbread when it makes big air pockets "
+                "METHOD: Boil potato. Mix the Rice flour, salt and potato flour together. Mash the boiled potato with the flour mix and press into 2 balls. Flatten and rollout. Heat pan to very hot and turn the flatbread when it makes big air pockets "
         );
         addRecipe(
                 "Cottage Pie",
-                "Add mince to an oven pan. Add the mash on top and level. Put the grated cheese generously on top. Bake until cheese browns and bubbles ."
+                "METHOD: Add mince to an oven pan. Add the mash on top and level. Put the grated cheese generously on top. Bake until cheese browns and bubbles ."
         );
         addRecipe(
                 "BLT Sandwich",
-                "Pack the bread with the bacon, Tomato slices and lettuce in layers. Season with salt and blackpepper corns and enjoy."
+                "METHOD: Pack the bread with the bacon, Tomato slices and lettuce in layers. Season with salt and blackpepper corns and enjoy."
         );
         addRecipe(
                 "Dagwood Sandwich",
-                "Fry the egg, add it to you breadroll as base. Add the steakstrips and bacon on top. Add the sliced tomatoes and sauce to complete it."
+                "METHOD: Fry the egg, add it to you breadroll as base. Add the steakstrips and bacon on top. Add the sliced tomatoes and sauce to complete it."
         );
         addRecipe(
                 "Boerewors Rolls",
-                "Put the Boerewors on the hotdog roll. Add the garnish of onions and tomato mix"
+                "METHOD: Put the Boerewors on the hotdog roll. Add the garnish of onions and tomato mix"
         );
         addRecipe(
                 "Chicken Lentil Soup",
-                "Put the Chicken, lentils, garlic, potato and butter into the slowcooker and cook for 2 hours. Spice close to 1 and a half hour afetr cooking for best taste ."
+                "METHOD: Put the Chicken, lentils, garlic, potato and butter into the slowcooker and cook for 2 hours. Spice close to 1 and a half hour afetr cooking for best taste ."
         );
         addRecipe(
                 "Ostrich Flatbread meal",
-                "Cook the ostrich pieces in the garlic and water mix. Spice as per your liking with your favourite spice mix. Butter the flatbreads and put the ostrich pieces on top."
+                "METHOD: Cook the ostrich pieces in the garlic and water mix. Spice as per your liking with your favourite spice mix. Butter the flatbreads and put the ostrich pieces on top."
         );
         addRecipe(
                 "Apple Pie",
-                "Cut the dough into square pieces of 15 cm by 15cm. Add a teaspoon of the apple and raisen mix into the middle. Fold all corners over to the middle until entirely wrapped. Bake for 30 mins."
+                "METHOD: Cut the dough into square pieces of 15 cm by 15cm. Add a teaspoon of the apple and raisen mix into the middle. Fold all corners over to the middle until entirely wrapped. Bake for 30 mins."
         );
         addRecipe(
                 "Ricepaper Mochi",
-                "Fold the yogurt and fruit mix into the ricepaper. Freeze for 30 minutes"
+                "METHOD: Fold the yogurt and fruit mix into the ricepaper. Freeze for 30 minutes"
         );
         addRecipe(
                 "Rumballs",
-                "Mix the condensemilk, biscuits and cacao together. Add the rum and roll into small balls - palmsize. Roll the balls in the coconut and put in the fridge for 30 minutes - better served cold."
+                "METHOD: Mix the condensemilk, biscuits and cacao together. Add the rum and roll into small balls - palmsize. Roll the balls in the coconut and put in the fridge for 30 minutes - better served cold."
                 );
         addRecipe(
                 "Sugar Cone Marshmallow Desert",
-                "Fill the sugar cones with marshmallows, add the blocks of chocolate and cover in foil. Put on the braai for 10 minutes."
+                "METHOD: Fill the sugar cones with marshmallows, add the blocks of chocolate and cover in foil. Put on the braai for 10 minutes."
         );
     }
 
