@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#424242"
     android:padding="16dp"
     tools:context=".AddIngredientActivity">
 
@@ -17,6 +18,7 @@
         android:layout_marginTop="109dp"
         android:layout_marginEnd="137dp"
         android:layout_marginBottom="582dp"
+        android:textSize="16dp"
         android:ems="10"
         android:hint="Ingredient Name"
         android:inputType="text"
@@ -51,7 +53,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25" />
 
     <EditText
         android:id="@+id/editQuantity"
@@ -61,13 +64,15 @@
         android:layout_marginTop="205dp"
         android:layout_marginEnd="137dp"
         android:layout_marginBottom="486dp"
+        android:textSize="16dp"
         android:ems="10"
         android:hint="Quantity"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
 
     <TextView
         android:id="@+id/textView4"
@@ -81,7 +86,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
 
     <TextView
         android:id="@+id/textView5"
@@ -95,7 +101,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editUnitMeasure"
@@ -104,14 +111,16 @@
         android:layout_marginStart="74dp"
         android:layout_marginTop="307dp"
         android:layout_marginEnd="137dp"
+        android:textSize="16dp"
         android:layout_marginBottom="384dp"
         android:ems="10"
-        android:hint="Unit Measure (g, kg, ml, pieces, cup, tablespoon, teaspoon"
+        android:hint="Unit Measure(g,kg,ml,etc)"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editExpireDate"
@@ -121,13 +130,15 @@
         android:layout_marginTop="412dp"
         android:layout_marginEnd="137dp"
         android:layout_marginBottom="279dp"
+        android:textSize="16dp"
         android:ems="10"
         android:hint="Expire Date"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnSave"

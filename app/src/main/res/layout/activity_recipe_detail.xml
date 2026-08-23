@@ -5,35 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     android:padding="16dp">
 
     <TextView
         android:id="@+id/txtRecipeName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"/>
+        android:layout_marginTop="48dp"
+        android:textSize="32sp" />
+
     <TextView
         android:text="Ingredients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"/>
+        android:textSize="28sp"/>
+
     <TextView
-        android:text="Method"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"/>
+        android:text="Method"
+        android:textSize="24sp" />
+
     <TextView
         android:id="@+id/txtIngredients"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:layout_marginTop="20dp"/>
+
     <TextView
         android:id="@+id/txtMethod"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:textSize="18sp" />
 
 </LinearLayout>
 

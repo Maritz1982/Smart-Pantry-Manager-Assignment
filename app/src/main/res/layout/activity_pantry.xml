@@ -11,7 +11,7 @@
 
     <TextView
         android:id="@+id/textView"
-        android:textSize="24sp"
+        android:textSize="28sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -21,7 +21,8 @@
         android:id="@+id/btnAddIngredient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Ingredient"/>
+        android:text="Add Ingredient"
+        android:layout_marginTop="48dp"/>
 
     <Button
         android:id="@+id/btnAddDelete"
@@ -38,6 +39,7 @@
         android:id="@+id/recyclerPantry"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="48dp"
         android:layout_weight="1"/>
 
 
