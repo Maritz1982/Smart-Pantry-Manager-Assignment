@@ -12,7 +12,7 @@ import com.example.smartpantryassignment.models.RecipeIngredient;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "smartpantry.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 7;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -20,6 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         String CREATE_PANTRY_TABLE =
                 "CREATE TABLE PantryItems (" +
                         "pantryId INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -49,6 +50,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "unitMeasure TEXT" +
                         ")";
         db.execSQL(CREATE_RECIPE_INGREDIENTS_TABLE);//create recipe ingrdients
+        //ContentValues values = new ContentValues();
+        //values.put(
+          //      "recipeName",
+            //    "Test Recipe");
+        //values.put(
+          //      "recipeProcess",
+            //    "test method");
+        //db.insert(
+          //      "Recipes",
+            //    null,
+              //  values);
+
+
 
     }
 
@@ -453,7 +467,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "cup");
         // Sugar Cones marshmallow desert RecipeId 17
         addRecipeIngredient(17,
-                "Chocolate bar clocks",
+                "Chocolate bar blocks",
                 3,
                 "pieces");
         addRecipeIngredient(17,
@@ -464,6 +478,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "Marshmallows",
                 3,
                 "pieces");
+    }
+    public void seedDatabase(){
+        seedRecipes();
+        seedRecipeIngredients();
+
     }
 
     public ArrayList<Recipe> getAllRecipes() { //db retrieval methods
@@ -531,7 +550,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ArrayList<RecipeIngredient> ingredients =
                     getIngredientsForRecipe(
                             recipe.getRecipeId());
-            if (ingredients.size() ==0) {
+            if (ingredients.size() == 0) {
                 canMake = false;
 
             }
@@ -543,53 +562,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     if (pantryItem.getIngredient()
                             .equalsIgnoreCase(
                                     ingredient.getIngredient())) {
-                        if (pantryItem.getQuantity()
-                                >= ingredient.getQuantity()) {
-                            found = true;
-                        }
+                        found = true;
+                        break;
                     }
                 }
-                if (!found){
+                if (!found) {
                     canMake = false;
                     break;
                 }
             }
-            if (canMake){
+            if (canMake) {
                 suggestedRecipes.add(recipe);
             }
         }
         return suggestedRecipes;
+
     }
-    public Recipe getRecipeById(int recipeId) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(
-                "SELECT * FROM Recipes WHERE recipeId=?",
-                new String[]{String.valueOf(recipeId)}
-        );
-        Recipe recipe = null;
-        if (cursor.moveToFirst()) {
-            recipe = new Recipe();
-            recipe.setRecipeId(
-                    cursor.getInt(0));
-            recipe.setRecipeName(
-                    cursor.getString(1));
-            recipe.setRecipeProcess(
-                    cursor.getString(2));
-        }
-        cursor.close();
-        db.close();
-        return recipe;
-    }
-
-
-
-
-        }
-
-
-
-
-
+                public Recipe getRecipeById ( int recipeId){
+                    SQLiteDatabase db = this.getReadableDatabase();
+                    Cursor cursor = db.rawQuery(
+                            "SELECT * FROM Recipes WHERE recipeId=?",
+                            new String[]{String.valueOf(recipeId)}
+                    );
+                    Recipe recipe = null;
+                    if (cursor.moveToFirst()) {
+                        recipe = new Recipe();
+                        recipe.setRecipeId(
+                                cursor.getInt(0));
+                        recipe.setRecipeName(
+                                cursor.getString(1));
+                        recipe.setRecipeProcess(
+                                cursor.getString(2));
+                    }
+                    cursor.close();
+                    db.close();
+                    return recipe;
+                }
+            }
 
 
 //database helper manages the SQLite database where it will create tables and CRUD methods

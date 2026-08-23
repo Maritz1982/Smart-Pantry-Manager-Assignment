@@ -37,7 +37,9 @@ public class PantryActivity extends AppCompatActivity {
         recyclerPantry = findViewById(R.id.recyclerPantry);
         dbHelper = new DatabaseHelper(this);
         pantryList = dbHelper.getAllIngredients();
-        adapter = new PantryAdapter(pantryList);
+        adapter = new PantryAdapter(
+                pantryList,
+                dbHelper);
         recyclerPantry.setLayoutManager(
                 new LinearLayoutManager(this));
         recyclerPantry.setAdapter(adapter);
@@ -60,7 +62,9 @@ public class PantryActivity extends AppCompatActivity {
         protected void onResume() {
             super.onResume();
             pantryList = dbHelper.getAllIngredients();
-            adapter = new PantryAdapter(pantryList);
+            adapter = new PantryAdapter(
+                    pantryList,
+                    dbHelper);
             recyclerPantry.setAdapter(adapter);
 
         btnSuggestedRecipes =

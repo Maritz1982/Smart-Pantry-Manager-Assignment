@@ -1,5 +1,6 @@
 package com.example.smartpantryassignment.models;
 
+import android.widget.Toast;
 import android.content.Intent;
 import android.widget.Button;
 import android.view.View;
@@ -25,6 +26,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
     DatabaseHelper dbHelper;
     Button btnOpenRecipe;
     EditText edtRecipeId;
+    Button btnSeed;
 
 
     @Override
@@ -33,57 +35,26 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_suggested_recipes);
         txtRecipes = findViewById(R.id.txtRecipes);
+        edtRecipeId =
+                findViewById(R.id.edtRecipeId);
         dbHelper = new DatabaseHelper(this);
         ArrayList<Recipe> recipes =
                 dbHelper.getSuggestedRecipes();
+        dbHelper.seedDatabase();
+
         btnOpenRecipe =
                 findViewById(R.id.btnOpenRecipe);
-        btnOpenRecipe.setOnClickListener(v -> {
-            if (!recipes.isEmpty()) {
-                Intent intent =
-                        new Intent(
-                                SuggestedRecipesActivity.this,
-                                RecipeDetailActivity.class);
-                intent.putExtra(
-                        "recipeId",
-                        recipes.get(0).getRecipeId());
-                startActivity(intent);
-
-            }
-        });
-        StringBuilder builder =
-                new StringBuilder();
-        builder.append("recipes Found: ")
-                .append(recipes.size())
-                .append("\n\n");
-        if (recipes.size() == 0) {
-            builder.append(
-                    "No Recipes match your pantry yet.\nAdd more ingredients."
-            );
-
-        } else {
-            for (Recipe recipe : recipes) {
-                builder.append(
-                                recipe.getRecipeId()
-                        ).append(" - ")
-                        .append(
-                                recipe.getRecipeName()
-                        ).append("\n");
-            }
-        }
-
-
-        txtRecipes.setText(builder.toString());
-        edtRecipeId =
-                findViewById(R.id.edtRecipeId);
-        btnOpenRecipe =
-                findViewById(R.id.btnOpenRecipe);
-        btnOpenRecipe.setOnClickListener(new View.OnClickListener(){
+        btnOpenRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
+                String recipeText =
+                        edtRecipeId.getText().toString();
+                if (recipeText.isEmpty()) {
+                    return;
+                }
+
                 int recipeId =
-                        Integer.parseInt(
-                                edtRecipeId.getText().toString());
+                        Integer.parseInt(recipeText);
                 Intent intent =
                         new Intent(
                                 SuggestedRecipesActivity.this,
@@ -92,10 +63,35 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
                         "recipeId",
                         recipeId);
                 startActivity(intent);
-
             }
+
         });
 
+        StringBuilder builder =
+                new StringBuilder();
 
+
+        builder.append("Recipe Found:")
+                .append(recipes.size())
+                .append("\n\n");
+        if (recipes.size() == 0) {
+            builder.append(
+                    "No recipes match your pantry yet. Add ingredients.");
+        } else {
+            for (Recipe recipe : recipes) {
+                builder.append(
+                        recipe.getRecipeId())
+                        .append(" - ")
+                        .append(recipe.getRecipeName())
+                        .append("\n");
+            }
         }
-        }
+
+
+        txtRecipes.setText(builder.toString());
+
+        btnOpenRecipe =
+                findViewById(R.id.btnOpenRecipe);
+
+    }
+}
