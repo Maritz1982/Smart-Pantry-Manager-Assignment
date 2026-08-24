@@ -40,7 +40,8 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
         ArrayList<Recipe> recipes =
                 dbHelper.getSuggestedRecipes();
-        dbHelper.seedDatabase();
+
+
 
         btnOpenRecipe =
                 findViewById(R.id.btnOpenRecipe);
@@ -69,7 +70,6 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
 
         StringBuilder builder =
                 new StringBuilder();
-
 
         builder.append("Recipe Found:")
                 .append(recipes.size())

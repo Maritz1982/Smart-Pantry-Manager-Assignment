@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:fontFamily="sans-serif"
     tools:context=".models.PantryActivity">
 
     <TextView
@@ -15,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
+        android:textStyle="bold"
         android:text="My Pantry" />
 
     <Button
@@ -24,11 +26,7 @@
         android:text="Add Ingredient"
         android:layout_marginTop="48dp"/>
 
-    <Button
-        android:id="@+id/btnAddDelete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Search"/>
+
     <Button
         android:id="@+id/btnSuggestedRecipes"
         android:layout_width="match_parent"
@@ -44,6 +42,7 @@
         android:id="@+id/recyclerPantry"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:textStyle="italic"
         android:layout_marginTop="48dp"
         android:layout_weight="1"/>
 

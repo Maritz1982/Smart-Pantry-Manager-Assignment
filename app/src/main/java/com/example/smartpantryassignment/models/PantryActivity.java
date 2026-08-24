@@ -36,6 +36,7 @@ public class PantryActivity extends AppCompatActivity {
 
         recyclerPantry = findViewById(R.id.recyclerPantry);
         dbHelper = new DatabaseHelper(this);
+
         pantryList = dbHelper.getAllIngredients();
         adapter = new PantryAdapter(
                 pantryList,
@@ -53,10 +54,6 @@ public class PantryActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
     }
         @Override
         protected void onResume() {
